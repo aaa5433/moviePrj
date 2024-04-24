@@ -41,7 +41,7 @@ public class Login implements KeyListener {
 	private static JLabel join = new JLabel("회원가입");
 	private static JLayeredPane layeredPane = new JLayeredPane();
 	private static JLabel background = new JLabel(
-			new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\megaboxLogo.jpg"));
+			new ImageIcon("img\\megaboxLogo.jpg"));
 
 	public static JFrame getFrame() {
 		return loginFrame;

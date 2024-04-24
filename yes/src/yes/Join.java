@@ -70,7 +70,7 @@ public class Join extends JFrame implements KeyListener {
 	static int duplCheckCnt = 0;
 	static HashMap<String, String> list = new HashMap<>();
 	private static JLabel background = new JLabel(
-			new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\megaboxLogo.jpg"));
+			new ImageIcon("img\\megaboxLogo.jpg"));
 	public static JFrame getFrame() {
 		return joinFrame;
 	}

@@ -94,7 +94,7 @@ public class Homedemo {
 		JPanel panel1 = new JPanel();
 		panel1.setBounds(110, 150, 200, 300);
 		JLabel imglabel1 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon1 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\criminal.PNG");// 이미지 주소
+		ImageIcon icon1 = new ImageIcon("img\\criminal.PNG");// 이미지 주소
 		Image img1 = icon1.getImage();
 		Image updateImg1 = img1.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon1 = new ImageIcon(updateImg1);
@@ -106,7 +106,7 @@ public class Homedemo {
 		JPanel panel2 = new JPanel();
 		panel2.setBounds(370, 150, 200, 300);
 		JLabel imglabel2 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon2 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\panda.png");// 이미지 주소
+		ImageIcon icon2 = new ImageIcon("img\\panda.png");// 이미지 주소
 		Image img2 = icon2.getImage();
 		Image updateImg2 = img2.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon2 = new ImageIcon(updateImg2);
@@ -118,7 +118,7 @@ public class Homedemo {
 		JPanel panel3 = new JPanel();
 		panel3.setBounds(620, 150, 200, 300);
 		JLabel imglabel3 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon3 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\sugar.jpg");// 이미지 주소
+		ImageIcon icon3 = new ImageIcon("img\\sugar.jpg");// 이미지 주소
 		Image img3 = icon3.getImage();
 		Image updateImg3 = img3.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon3 = new ImageIcon(updateImg3);
@@ -130,7 +130,7 @@ public class Homedemo {
 		JPanel panel4 = new JPanel();
 		panel4.setBounds(870, 150, 200, 300);
 		JLabel imglabel4 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon4 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\pamyo.jpg");// 이미지 주소
+		ImageIcon icon4 = new ImageIcon("img\\pamyo.jpg");// 이미지 주소
 		Image img4 = icon4.getImage();
 		Image updateImg4 = img4.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon4 = new ImageIcon(updateImg4);
@@ -153,7 +153,7 @@ public class Homedemo {
 		JPanel panel5 = new JPanel();
 		panel5.setBounds(110, 150, 200, 300);
 		JLabel imglabel5 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon5 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\challengers.jpg");// 이미지 주소
+		ImageIcon icon5 = new ImageIcon("img\\challengers.jpg");// 이미지 주소
 		Image img5 = icon5.getImage();
 		Image updateImg5 = img5.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon5 = new ImageIcon(updateImg5);
@@ -165,7 +165,7 @@ public class Homedemo {
 		JPanel panel6 = new JPanel();
 		panel6.setBounds(370, 150, 200, 300);
 		JLabel imglabel6 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon6 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\monster.jpg");// 이미지 주소
+		ImageIcon icon6 = new ImageIcon("img\\monster.jpg");// 이미지 주소
 		Image img6 = icon6.getImage();
 		Image updateImg6 = img6.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon6 = new ImageIcon(updateImg6);
@@ -177,7 +177,7 @@ public class Homedemo {
 		JPanel panel7 = new JPanel();
 		panel7.setBounds(620, 150, 200, 300);
 		JLabel imglabel7 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon7 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\japan.jpg");// 이미지 주소
+		ImageIcon icon7 = new ImageIcon("img\\japan.jpg");// 이미지 주소
 		Image img7 = icon7.getImage();
 		Image updateImg7 = img7.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon7 = new ImageIcon(updateImg7);
@@ -189,7 +189,7 @@ public class Homedemo {
 		JPanel panel8 = new JPanel();
 		panel8.setBounds(870, 150, 200, 300);
 		JLabel imglabel8 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon8 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\stunt.jpg");// 이미지 주소
+		ImageIcon icon8 = new ImageIcon("img\\stunt.jpg");// 이미지 주소
 		Image img8 = icon8.getImage();
 		Image updateImg8 = img8.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon8 = new ImageIcon(updateImg8);
@@ -203,7 +203,7 @@ public class Homedemo {
 		JPanel panel9 = new JPanel();
 		panel9.setBounds(110, 150, 200, 300);
 		JLabel imglabel9 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon9 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\poketmon.jpg");// 이미지 주소
+		ImageIcon icon9 = new ImageIcon("img\\poketmon.jpg");// 이미지 주소
 		Image img9 = icon9.getImage();
 		Image updateImg9 = img9.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon9 = new ImageIcon(updateImg9);
@@ -215,7 +215,7 @@ public class Homedemo {
 		JPanel panel10 = new JPanel();
 		panel10.setBounds(370, 150, 200, 300);
 		JLabel imglabel10 = new JLabel();// 이미지 담을 라벨
-		ImageIcon icon10 = new ImageIcon("C:\\source\\moviePrj\\yes\\src\\img\\traveler.jpg");// 이미지 주소
+		ImageIcon icon10 = new ImageIcon("img\\traveler.jpg");// 이미지 주소
 		Image img10 = icon10.getImage();
 		Image updateImg10 = img10.getScaledInstance(200, 300, Image.SCALE_DEFAULT);// 크기조정
 		ImageIcon updateIcon10 = new ImageIcon(updateImg10);

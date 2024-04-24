@@ -1,5 +1,5 @@
-package yes;
-
-public class Main1 {
-
-}
+//package yes;
+//
+//public class Main1 {
+//
+//}
