@@ -1,5 +1,7 @@
+//jhmoon
 package yes.src.yes;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -28,6 +30,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 import yes.src.dao.UserDao;
 
@@ -40,8 +44,8 @@ public class Login implements KeyListener {
 	private static JButton LoginBtn = new JButton("Login");
 	private static JLabel join = new JLabel("회원가입");
 	private static JLayeredPane layeredPane = new JLayeredPane();
-	private static JLabel background = new JLabel(
-			new ImageIcon("img\\megaboxLogo.jpg"));
+	private static JLabel background = new JLabel(new ImageIcon("img\\megaboxlogo.jpg"));
+	private static JLabel closeBtn = new JLabel(new ImageIcon("img\\close.jpg"));
 
 	public static JFrame getFrame() {
 		return loginFrame;
@@ -50,10 +54,9 @@ public class Login implements KeyListener {
 	public Login() throws IOException {
 		loginFrame.setSize(500, 300);
 		loginFrame.setTitle("MegaBox Login"); // 프레임 제목 설정
-		loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginFrame.setLocationRelativeTo(null);
 		loginFrame.setResizable(false);
-		
+
 		background.setBounds(0, 0, 500, 300);
 		layeredPane.setPreferredSize(new Dimension(500, 300));
 
@@ -63,15 +66,20 @@ public class Login implements KeyListener {
 		idInputTextBox.setBounds(130, 50, 180, 30);
 		passInputTextBox.setBounds(130, 100, 180, 30);
 		LoginBtn.setBounds(330, 50, 100, 80);
+		LoginBtn.setBorderPainted(false);
 		
-		join.setBounds(80, 215, 100, 38);
-		join.setForeground(Color.white);
-		idText.setForeground(Color.white);
-		passText.setForeground(Color.white);
+		closeBtn.setBounds(470, 0, 30, 30);
 
+		join.setBounds(80, 250, 100, 38);
+		join.setForeground(Color.white);
 
 		addComponentsToLayeredPane();
+		Color color = new Color(70, 70, 80);
+		LoginBtn.setText("로그인");
+		LoginBtn.setForeground(Color.white);
+		LoginBtn.setBackground(color);
 		loginFrame.add(layeredPane);
+		loginFrame.setUndecorated(true);
 		loginFrame.setVisible(true);
 		loginFrame.getContentPane().add(background);
 
@@ -91,6 +99,13 @@ public class Login implements KeyListener {
 				passInputTextBox.setText("");
 			}
 		});
+
+		closeBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+                System.exit(0);
+			}
+		});
 	}
 
 	private void addComponentsToLayeredPane() {
@@ -101,8 +116,9 @@ public class Login implements KeyListener {
 		layeredPane.add(passInputTextBox, Integer.valueOf(4));
 		layeredPane.add(LoginBtn, Integer.valueOf(5));
 		layeredPane.add(join, Integer.valueOf(6));
+		layeredPane.add(closeBtn, Integer.valueOf(7));
 	}
-
+	   
 	public void loginCheck(String id, char[] cs) {
 		LocalTime now = LocalTime.now();
 		LocalDateTime now1 = LocalDateTime.now();
@@ -122,8 +138,7 @@ public class Login implements KeyListener {
 						"경고 메시지", JOptionPane.WARNING_MESSAGE);
 				loginFrame.setVisible(false);
 				new Homedemo();
-			}
-			else if (loginCode == 1)
+			} else if (loginCode == 1)
 				JOptionPane.showMessageDialog(null, "비밀번호가 맞지 않습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 			else if (loginCode == 2)
 				JOptionPane.showMessageDialog(null, "ID가 존재하지 않습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);

@@ -68,6 +68,7 @@ public class UserDao {
 			pstmt.setString(6, list.get("sex"));	
 			pstmt.setString(7, list.get("phone"));	
 			
+			System.out.println(pstmt.toString());
 			
 			int cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
