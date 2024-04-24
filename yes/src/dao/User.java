@@ -1,4 +1,4 @@
-package dao;
+package yes.src.dao;
 
 public class User {
 	String id ;
@@ -39,10 +39,10 @@ public class User {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public String getSex(String sex) {
+	public String getGender(String sex) {
 		return sex;
 	}
-	public void setSex(String sex) {
+	public void setGender(String sex) {
 		this.sex = sex;
 	}
 	public String getPhone(String phone) {

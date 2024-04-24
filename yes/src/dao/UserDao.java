@@ -1,4 +1,4 @@
-package dao;
+package yes.src.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,7 +39,7 @@ public class UserDao {
 				user.getName(rs.getString("NAME"));
 				user.getIdNum(rs.getString("IDNUM"));
 				user.getMail(rs.getString("MAIL"));
-				user.getSex(rs.getString("SEX"));
+				user.getGender(rs.getString("SEX"));
 				user.getPhone(rs.getString("PHONE"));
 				conn.close();
 				return user;
@@ -121,7 +121,6 @@ public class UserDao {
 			return 1;
 		}
 		return -1;
-
 	}
 
 	public static User selectAll() {
@@ -139,7 +138,7 @@ public class UserDao {
 				user.getName(rs.getString("NAME"));
 				user.getIdNum(rs.getString("IDNUM"));
 				user.getMail(rs.getString("MAIL"));
-				user.getSex(rs.getString("SEX"));
+				user.getGender(rs.getString("SEX"));
 			}
 			conn.close();
 			return user;
