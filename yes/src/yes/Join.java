@@ -61,6 +61,7 @@ public class Join extends JFrame implements KeyListener {
 	static JLabel at = new JLabel("@");
 	static JLabel PhoneLabel = new JLabel("폰번호");
 	static JButton duplCheck = new JButton("중복체크");
+	static JLabel ahn = new JLabel("위험");
 	static JPasswordField passInputTextBox = new JPasswordField();
 	static JTextField nameInputTextBox = new JTextField();
 	static JTextField mailInputTextBox = new JTextField();
@@ -83,9 +84,7 @@ public class Join extends JFrame implements KeyListener {
 	public static JFrame getFrame() {
 		return joinFrame;
 	}
-
 	public Join() {
-
 		addComponentsToLayeredPane();
 		joinFrame.removeNotify();
 		joinFrame.setUndecorated(true);
@@ -96,6 +95,8 @@ public class Join extends JFrame implements KeyListener {
 		joinFrame.setSize(500, 300); // 프레임 크기 설정
 		joinFrame.setLocationRelativeTo(null);
 		joinFrame.setResizable(false);
+		ahn.setBounds(200, 70, 90, 30);
+		
 		
 		background.setBounds(0, 0, 500, 300);
 		layeredPane.setPreferredSize(new Dimension(500, 300));
@@ -169,8 +170,9 @@ public class Join extends JFrame implements KeyListener {
 		phoneInputTextBox1.addKeyListener(this);
 		phoneInputTextBox2.addKeyListener(this);
 		
+		
+		
 		closeBtn.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent e) {
 				duplCheckCnt=0;
 				textBoxNull();
@@ -180,10 +182,18 @@ public class Join extends JFrame implements KeyListener {
 		});
 		duplCheck.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+
 				duplCheckCnt++;
-				if (idInputTextBox.getText().isEmpty())
+				
+				if(idInputTextBox.getText().length() < 5 || idInputTextBox.getText().length() >15) {
+					JOptionPane.showMessageDialog(null, "ID 길이는 5-15자리 사이입니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
+					idInputTextBox.setText("");
+				}else if(passInputTextBox.getText().length() < 8 || passInputTextBox.getText().length() >15) {
+					JOptionPane.showMessageDialog(null, "비밀번호: 7~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
+					passInputTextBox.setText("");
+				}else if (idInputTextBox.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "공백칸을 입력하세요!", "경고 메시지", JOptionPane.WARNING_MESSAGE);
-				else if (Pattern.matches("^[0-9]*$", idInputTextBox.getText().substring(0,1)))  {
+				}else if (Pattern.matches("^[0-9]*$", idInputTextBox.getText().substring(0,1)))  {
 					JOptionPane.showMessageDialog(null, "ID 첫번째 문자는 숫자로 시작할 수 없습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 					idInputTextBox.setText("");
 				}else {
@@ -209,24 +219,27 @@ public class Join extends JFrame implements KeyListener {
 				
 				String phone = phoneInputTextBox.getText()+"-"+phoneInputTextBox1.getText()+"-"+phoneInputTextBox2.getText();
 				
-				System.out.println(loop);
-				
 				if(!(mailFormatCheck(mailInputTextBox1.getText()))) {
 					JOptionPane.showMessageDialog(null, "맞지 않는 이메일 형식입니다.\n예) ID@nate.com", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 					mailInputTextBox.setText(""); mailInputTextBox1.setText("");
-				}else if (id.isEmpty() || pw.isEmpty() || name.isEmpty() || idNum.isEmpty() || idNum.isEmpty() || mailInputTextBox.getText().isEmpty() || mailInputTextBox1.getText().isEmpty() || phone.isEmpty())
+				}else if (loop ==0 && (id.isEmpty() || pw.isEmpty() || name.isEmpty() || idNum.isEmpty() || idNum.isEmpty() || mailInputTextBox.getText().isEmpty() || mailInputTextBox1.getText().isEmpty() || phone.isEmpty()))
 					JOptionPane.showMessageDialog(null, "공백칸을 입력하세요!", "경고 메시지", JOptionPane.WARNING_MESSAGE);
-				else if (duplCheckCnt == 0) {
-					System.out.println(duplCheckCnt);
+				else if (loop ==0 && (duplCheckCnt == 0)) {
 					JOptionPane.showMessageDialog(null, "ID중복체크를 해주세요.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 				}
-				else if (idNum.length() != 6 || idNumInputTextBox1.getText().length() != 1 || Integer.parseInt(idNumInputTextBox1.getText()) > 2 || Integer.parseInt(idNumInputTextBox1.getText()) == 0 ) {
+				else if (loop ==0 && (idNum.length() != 6 || idNumInputTextBox1.getText().length() != 1 || Integer.parseInt(idNumInputTextBox1.getText()) > 2 || Integer.parseInt(idNumInputTextBox1.getText()) == 0 )) {
 					JOptionPane.showMessageDialog(null, "올바른 주민번호가 아닙니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 					idNumInputTextBox.setText("");
 					idNumInputTextBox1.setText("");
-				}else if (Pattern.matches("^[0-9]*$", idInputTextBox.getText().substring(0,1)))  {
+				}else if (loop ==0 && (Pattern.matches("^[0-9]*$", idInputTextBox.getText().substring(0,1).toString())))  {
 					JOptionPane.showMessageDialog(null, "ID 첫번째 문자는 숫자로 시작할 수 없습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 					idInputTextBox.setText("");
+				}else if(idInputTextBox.getText().length() < 5 || idInputTextBox.getText().length() >15) {
+					JOptionPane.showMessageDialog(null, "ID 길이는 5-15자리 사이입니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
+					idNumInputTextBox.setText("");
+				}else if(passInputTextBox.getText().length() < 8 || passInputTextBox.getText().length() >15) {
+					JOptionPane.showMessageDialog(null, "비밀번호: 7~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
+					passInputTextBox.setText("");
 				}
 				else {
 					try {
@@ -252,12 +265,13 @@ public class Join extends JFrame implements KeyListener {
 			}
 
 			public void setData(HashMap<String,String> list) throws SQLException {
-				loop++;
 				if(!list.get("id").equals("")) {
+					loop++;
+
+					
 					UserDao.insertUser(list);
 					JOptionPane.showMessageDialog(null, list.get("id")+"님 가입 완료", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 					
-				}else {
 				}
 				duplCheckCnt = 0;
 				list.clear();
@@ -268,7 +282,6 @@ public class Join extends JFrame implements KeyListener {
 		});
 
 		JoinCancel.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent e) {
 				duplCheckCnt=0;
 				textBoxNull();
@@ -279,6 +292,9 @@ public class Join extends JFrame implements KeyListener {
 
 	}// join class
 	
+	public void pwRedGreenText(){
+		//Pattern.matches("^(?=.*[a-zA-Z])((?=.*\\d)|(?=.*\\W)).{7,20}+$", passInputTextBox.getText().toString())
+	}
 	private void addComponentsToLayeredPane() {
 		layeredPane.add(background, Integer.valueOf(0));
 		layeredPane.add(idNumLabel, Integer.valueOf(1));
@@ -307,6 +323,7 @@ public class Join extends JFrame implements KeyListener {
 		layeredPane.add(phoneInputTextBox2, Integer.valueOf(24));
 		layeredPane.add(dash1, Integer.valueOf(25));
 		layeredPane.add(dash2, Integer.valueOf(26));
+		layeredPane.add(ahn, Integer.valueOf(27));
 	}
 	
 	// 주민등록번호 길이 체크
@@ -323,14 +340,6 @@ public class Join extends JFrame implements KeyListener {
 		phoneInputTextBox2.setText("");
 	}
 
-	public void blankTextBoxCheck() {
-		if (idInputTextBox.getText().isEmpty() || passInputTextBox.getText().isEmpty()
-				|| nameInputTextBox.getText().isEmpty() || idNumInputTextBox.getText().isEmpty()
-				|| idNumInputTextBox1.getText().isEmpty() || mailInputTextBox.getText().isEmpty()
-				|| mailInputTextBox1.getText().isEmpty() || phoneInputTextBox.getText().isEmpty())
-			JOptionPane.showMessageDialog(null, "공백칸을 입력하세요!", "경고 메시지", JOptionPane.WARNING_MESSAGE);
-	}
-
 	// ID중복체크
 	public int duplCheck(int code) {
 		duplCheckCnt++;
@@ -344,6 +353,7 @@ public class Join extends JFrame implements KeyListener {
 					JOptionPane.WARNING_MESSAGE);
 			return 1;
 		}
+		
 	}
 	
 	public boolean mailFormatCheck(String i) {	
@@ -359,28 +369,39 @@ public class Join extends JFrame implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-
+		
 	}
 	
 	// 주민등록번호 문자 체크
-	@Override
 	public void keyPressed(KeyEvent e) {
 		String keychar = String.valueOf(e.getKeyChar()).toString();
+		Color color = new Color(255, 200, 0);
 		//길이 체크
+		if(Pattern.matches("^(?=.*[a-zA-Z])((?=.*\\d)|(?=.*\\W)).{7,20}+$", passInputTextBox.getText().toString())){
+			ahn.setForeground(Color.green);
+			ahn.setText("안전");
+		}else if(Pattern.matches("^(?=.*[a-zA-Z])((?=.*\\d)|(?=.*\\W)).{7,15}+$", passInputTextBox.getText().toString())){
+			ahn.setForeground(color);
+			ahn.setText("보통");
+		}else if(Pattern.matches("^(?=.*[a-zA-Z])((?=.*\\d)|(?=.*\\W)).{5,10}+$", passInputTextBox.getText().toString())) {
+			ahn.setForeground(Color.red);
+			ahn.setText("위험");
+		}else {
+			ahn.setForeground(Color.red);
+			ahn.setText("");
+		}
+		
 		if(idInputTextBox.getText().length() > 10) {
-			JOptionPane.showMessageDialog(null, "ID는 10자리를 넘을 수 없습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ID는 15자리를 넘을 수 없습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 			idInputTextBox.setText("");
 		} else if(!Pattern.matches("^[a-z1-9]*$", idInputTextBox.getText().toString())) {
 			JOptionPane.showMessageDialog(null, "ID는 소문자와 숫자로만 이루어져야 합니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 			idInputTextBox.setText("");
-		}else if(passInputTextBox.getText().length() > 10) {
-			JOptionPane.showMessageDialog(null, "패스워드는 10자리를 넘을 수 없습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
-			passInputTextBox.setText("");
 		}else if(nameInputTextBox.getText().length() > 20) {
 			JOptionPane.showMessageDialog(null, "이름은 20자리를 넘을 수 없습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 			nameInputTextBox.setText("");
 		}else if(!Pattern.matches("^[0-9]*$", idNumInputTextBox.getText().toString()) || !Pattern.matches("^[0-9]*$", idNumInputTextBox1.getText().toString()) || idNumInputTextBox.getText().length() > 6 || idNumInputTextBox1.getText().length() > 1) {
-			JOptionPane.showMessageDialog(null, "주민등록번호를 정확히 입력하세요.\n예) 생년월일020101", "경고 메시지", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "주민번호를 정확히 입력하세요.\n예) 생년월일020101", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 			idNumInputTextBox.setText("");
 			idNumInputTextBox1.setText("");
 		}else if(mailInputTextBox.getText().length() > 10 || mailInputTextBox1.getText().length() > 20) {
@@ -393,7 +414,10 @@ public class Join extends JFrame implements KeyListener {
 			JOptionPane.showMessageDialog(null, "휴대폰 번호를 다시 확인해주세요.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
 			phoneInputTextBox.setText(""); phoneInputTextBox1.setText(""); phoneInputTextBox2.setText("");
 		}
-		
+//		else if() {
+//			JOptionPane.showMessageDialog(null, "패스워드는 7~20자리 사이여야 합니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
+//			passInputTextBox.setText("");
+//		}//;
 	}
 
 	@Override

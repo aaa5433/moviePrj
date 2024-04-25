@@ -10,6 +10,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -52,6 +53,9 @@ public class Login implements KeyListener {
 	}
 
 	public Login() throws IOException {
+		idInputTextBox.setNextFocusableComponent(passInputTextBox);
+		passInputTextBox.setNextFocusableComponent(LoginBtn);
+
 		loginFrame.setSize(500, 300);
 		loginFrame.setTitle("MegaBox Login"); // 프레임 제목 설정
 		loginFrame.setLocationRelativeTo(null);
@@ -83,6 +87,8 @@ public class Login implements KeyListener {
 		loginFrame.setVisible(true);
 		loginFrame.getContentPane().add(background);
 
+		
+		
 		LoginBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -104,6 +110,15 @@ public class Login implements KeyListener {
 			@Override
 			public void mouseClicked(MouseEvent e) {
                 System.exit(0);
+			}
+		});
+		
+		passInputTextBox.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == 10) {
+					loginCheck(idInputTextBox.getText(), passInputTextBox.getPassword());
+				}
 			}
 		});
 	}
@@ -152,7 +167,7 @@ public class Login implements KeyListener {
 		} catch (Exception e) {
 		}
 	}
-
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int keycode = e.getKeyCode();
@@ -164,6 +179,7 @@ public class Login implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			System.out.println("enter");
 		}
+		
 	}
 
 	@Override
