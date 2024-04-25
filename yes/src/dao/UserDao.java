@@ -39,7 +39,7 @@ public class UserDao {
 				user.getName(rs.getString("NAME"));
 				user.getIdNum(rs.getString("IDNUM"));
 				user.getMail(rs.getString("MAIL"));
-				user.getGender(rs.getString("SEX"));
+				user.getGender(rs.getString("GENDER"));
 				user.getPhone(rs.getString("PHONE"));
 				conn.close();
 				return user;
@@ -65,7 +65,7 @@ public class UserDao {
 			pstmt.setString(3, list.get("name"));	
 			pstmt.setString(4, list.get("idNum"));	
 			pstmt.setString(5, list.get("mail"));	
-			pstmt.setString(6, list.get("sex"));	
+			pstmt.setString(6, list.get("gender"));	
 			pstmt.setString(7, list.get("phone"));	
 			
 			System.out.println(pstmt.toString());
@@ -139,7 +139,7 @@ public class UserDao {
 				user.getName(rs.getString("NAME"));
 				user.getIdNum(rs.getString("IDNUM"));
 				user.getMail(rs.getString("MAIL"));
-				user.getGender(rs.getString("SEX"));
+				user.getGender(rs.getString("GENDER"));
 			}
 			conn.close();
 			return user;
