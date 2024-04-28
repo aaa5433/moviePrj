@@ -1,5 +1,6 @@
 package yes.src.yes;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -19,11 +20,10 @@ class date extends JLabel{
 		this.date = date;
 		setText(date);
 		setOpaque(true);
-		setBackground(Color.white);
 		setBounds(10, 0, 120, 100);
 		//폰트 설정
 		Font font = getFont();
-		setFont(new Font(font.getFontName(), Font.BOLD, 20));
+		setFont(new Font(font.getFontName(), Font.BOLD, 30));
 		setHorizontalAlignment(CENTER);
 		
 		
@@ -37,7 +37,6 @@ class date extends JLabel{
 class date1 extends JPanel{
 	public date1() {
 		setBounds(0, 180, 1200, 100);
-		setBackground(Color.red);
 		setLayout(null);
 		
 		date date = new date("5/2");
@@ -47,32 +46,40 @@ class date1 extends JPanel{
 		JRadioButton radioButton1 = new JRadioButton();
 		JRadioButton radioButton2 = new JRadioButton();
 		JRadioButton radioButton3 = new JRadioButton();
+		JRadioButton radioButton4 = new JRadioButton();
 		
 		radioButton1.setOpaque(false);
 		radioButton2.setOpaque(false);
 		radioButton3.setOpaque(false);
+		radioButton4.setOpaque(false);
 		
 		radioButton1.setBounds(150, 25, 150, 60);
-		radioButton1.setText("9:30 ~ \n11 : 19");
+		radioButton1.setText("9:30 ~ 11:19");
 		Font font1 = radioButton1.getFont();
 		radioButton1.setFont(new Font(font1.getFontName(), Font.BOLD,18));
-		radioButton2.setBounds(300, 25, 200, 60);
-		radioButton2.setText("12:00 ~ 13 : 49");
+		radioButton2.setBounds(350, 25, 150, 60);
+		radioButton2.setText("12:00 ~ 13:49");
 		Font font2 = radioButton2.getFont();
 		radioButton2.setFont(new Font(font2.getFontName(), Font.BOLD,18));
-		radioButton3.setBounds(450, 25, 200, 60);
+		radioButton3.setBounds(550, 25, 150, 60);
 		radioButton3.setText("16:00 ~ 17:49");
 		Font font3 = radioButton3.getFont();
 		radioButton3.setFont(new Font(font3.getFontName(), Font.BOLD,18));
+		radioButton4.setBounds(750, 25, 150, 60);
+		radioButton4.setText("19:00 ~ 20:49");
+		Font font4 = radioButton4.getFont();
+		radioButton4.setFont(new Font(font4.getFontName(), Font.BOLD,18));
 		// 라디오 버튼을 그룹으로 묶기
 		ButtonGroup group = new ButtonGroup();
 		group.add(radioButton1);
 		group.add(radioButton2);
 		group.add(radioButton3);
+		group.add(radioButton4);
 		
 		add(radioButton1);
 		add(radioButton2);
 		add(radioButton3);
+		add(radioButton4);
 		System.out.println(date.getdate());
 	}
 }
@@ -82,7 +89,6 @@ class date1 extends JPanel{
 class date2 extends JPanel{
 	public date2() {
 		setBounds(0, 300, 1200, 100);
-		setBackground(Color.red);
 		setLayout(null);
 		
 		
@@ -94,32 +100,40 @@ class date2 extends JPanel{
 				JRadioButton radioButton1 = new JRadioButton();
 				JRadioButton radioButton2 = new JRadioButton();
 				JRadioButton radioButton3 = new JRadioButton();
+				JRadioButton radioButton4 = new JRadioButton();
 				
 				radioButton1.setOpaque(false);
 				radioButton2.setOpaque(false);
 				radioButton3.setOpaque(false);
+				radioButton4.setOpaque(false);
 				
 				radioButton1.setBounds(150, 25, 150, 60);
 				radioButton1.setText("8:30 ~ 10 : 19");
 				Font font1 = radioButton1.getFont();
 				radioButton1.setFont(new Font(font1.getFontName(), Font.BOLD,18));
-				radioButton2.setBounds(300, 25, 200, 60);
+				radioButton2.setBounds(350, 25, 200, 60);
 				radioButton2.setText("12:00 ~ 13 : 49");
 				Font font2 = radioButton2.getFont();
 				radioButton2.setFont(new Font(font2.getFontName(), Font.BOLD,18));
-				radioButton3.setBounds(450, 25, 200, 60);
+				radioButton3.setBounds(550, 25, 200, 60);
 				radioButton3.setText("18:00 ~ 19:49");
 				Font font3 = radioButton3.getFont();
 				radioButton3.setFont(new Font(font3.getFontName(), Font.BOLD,18));
+				radioButton4.setBounds(750, 25, 150, 60);
+				radioButton4.setText("21:00 ~ 22:49");
+				Font font4 = radioButton4.getFont();
+				radioButton4.setFont(new Font(font4.getFontName(), Font.BOLD,18));
 				// 라디오 버튼을 그룹으로 묶기
 				ButtonGroup group = new ButtonGroup();
 				group.add(radioButton1);
 				group.add(radioButton2);
 				group.add(radioButton3);
+				group.add(radioButton4);
 				
 				add(radioButton1);
 				add(radioButton2);
 				add(radioButton3);
+				add(radioButton4);
 	}
 }
 
@@ -127,12 +141,51 @@ class date2 extends JPanel{
 class date3 extends JPanel{
 	public date3() {
 		setBounds(0, 420, 1200, 100);
-		setBackground(Color.red);
 		setLayout(null);
 		
 		
 		date date = new date("5/4");
 		add(date);
+		
+		//시간 선택 버튼
+		
+		JRadioButton radioButton1 = new JRadioButton();
+		JRadioButton radioButton2 = new JRadioButton();
+		JRadioButton radioButton3 = new JRadioButton();
+		JRadioButton radioButton4 = new JRadioButton();
+		
+		radioButton1.setOpaque(false);
+		radioButton2.setOpaque(false);
+		radioButton3.setOpaque(false);
+		radioButton4.setOpaque(false);
+		
+		radioButton1.setBounds(150, 25, 150, 60);
+		radioButton1.setText("12:30 ~ 14 : 19");
+		Font font1 = radioButton1.getFont();
+		radioButton1.setFont(new Font(font1.getFontName(), Font.BOLD,18));
+		radioButton2.setBounds(350, 25, 200, 60);
+		radioButton2.setText("15:10 ~ 16 : 59");
+		Font font2 = radioButton2.getFont();
+		radioButton2.setFont(new Font(font2.getFontName(), Font.BOLD,18));
+		radioButton3.setBounds(550, 25, 200, 60);
+		radioButton3.setText("17:00 ~ 18:49");
+		Font font3 = radioButton3.getFont();
+		radioButton3.setFont(new Font(font3.getFontName(), Font.BOLD,18));
+		radioButton4.setBounds(750, 25, 150, 60);
+		radioButton4.setText("20:05 ~ 21:54");
+		Font font4 = radioButton4.getFont();
+		radioButton4.setFont(new Font(font4.getFontName(), Font.BOLD,18));
+		// 라디오 버튼을 그룹으로 묶기
+		ButtonGroup group = new ButtonGroup();
+		group.add(radioButton1);
+		group.add(radioButton2);
+		group.add(radioButton3);
+		group.add(radioButton4);
+		
+		add(radioButton1);
+		add(radioButton2);
+		add(radioButton3);
+		add(radioButton4);
 	}
 }
 
@@ -140,19 +193,55 @@ class date3 extends JPanel{
 class date4 extends JPanel{
 	public date4() {
 		setBounds(0, 540, 1200, 100);
-		setBackground(Color.red);
 		setLayout(null);
 		
 		
 		date date = new date("5/5");
 		add(date);
+		//시간선택버튼
+		JRadioButton radioButton1 = new JRadioButton();
+		JRadioButton radioButton2 = new JRadioButton();
+		JRadioButton radioButton3 = new JRadioButton();
+		JRadioButton radioButton4 = new JRadioButton();
+		
+		radioButton1.setOpaque(false);
+		radioButton2.setOpaque(false);
+		radioButton3.setOpaque(false);
+		radioButton4.setOpaque(false);
+		
+		radioButton1.setBounds(150, 25, 150, 60);
+		radioButton1.setText("07:00 ~ 08:49");
+		Font font1 = radioButton1.getFont();
+		radioButton1.setFont(new Font(font1.getFontName(), Font.BOLD,18));
+		radioButton2.setBounds(350, 25, 200, 60);
+		radioButton2.setText("11:30 ~ 13:19");
+		Font font2 = radioButton2.getFont();
+		radioButton2.setFont(new Font(font2.getFontName(), Font.BOLD,18));
+		radioButton3.setBounds(550, 25, 200, 60);
+		radioButton3.setText("17:20 ~ 19:09");
+		Font font3 = radioButton3.getFont();
+		radioButton3.setFont(new Font(font3.getFontName(), Font.BOLD,18));
+		radioButton4.setBounds(750, 25, 150, 60);
+		radioButton4.setText("23:00 ~ 24:49");
+		Font font4 = radioButton4.getFont();
+		radioButton4.setFont(new Font(font4.getFontName(), Font.BOLD,18));
+		// 라디오 버튼을 그룹으로 묶기
+		ButtonGroup group = new ButtonGroup();
+		group.add(radioButton1);
+		group.add(radioButton2);
+		group.add(radioButton3);
+		group.add(radioButton4);
+		
+		add(radioButton1);
+		add(radioButton2);
+		add(radioButton3);
+		add(radioButton4);
 	}
 }
 
 class Thearter extends JPanel{
 	public Thearter() {
 		setBounds(0, 0, 1200, 165);
-		setBackground(Color.black);
 		setLayout(null);
 		
 		
@@ -166,10 +255,6 @@ class Thearter extends JPanel{
 		chungla.setBounds(625, 30, 200, 100);
 		hwagok.setBounds(875, 30, 200, 100);
 		
-		bucheon.setBackground(Color.yellow);
-		incheon.setBackground(Color.white);
-		chungla.setBackground(Color.green);
-		hwagok.setBackground(Color.blue);
 		
 		
 		add(bucheon);
