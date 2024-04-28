@@ -1,12 +1,15 @@
 package yes.src.yes;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 // 날짜 및 시간대
 
 // 5/2
@@ -39,6 +42,37 @@ class date1 extends JPanel{
 		
 		date date = new date("5/2");
 		add(date);
+		//시간 선택 버튼
+		
+		JRadioButton radioButton1 = new JRadioButton();
+		JRadioButton radioButton2 = new JRadioButton();
+		JRadioButton radioButton3 = new JRadioButton();
+		
+		radioButton1.setOpaque(false);
+		radioButton2.setOpaque(false);
+		radioButton3.setOpaque(false);
+		
+		radioButton1.setBounds(150, 25, 150, 60);
+		radioButton1.setText("9:30 ~ \n11 : 19");
+		Font font1 = radioButton1.getFont();
+		radioButton1.setFont(new Font(font1.getFontName(), Font.BOLD,18));
+		radioButton2.setBounds(300, 25, 200, 60);
+		radioButton2.setText("12:00 ~ 13 : 49");
+		Font font2 = radioButton2.getFont();
+		radioButton2.setFont(new Font(font2.getFontName(), Font.BOLD,18));
+		radioButton3.setBounds(450, 25, 200, 60);
+		radioButton3.setText("16:00 ~ 17:49");
+		Font font3 = radioButton3.getFont();
+		radioButton3.setFont(new Font(font3.getFontName(), Font.BOLD,18));
+		// 라디오 버튼을 그룹으로 묶기
+		ButtonGroup group = new ButtonGroup();
+		group.add(radioButton1);
+		group.add(radioButton2);
+		group.add(radioButton3);
+		
+		add(radioButton1);
+		add(radioButton2);
+		add(radioButton3);
 		System.out.println(date.getdate());
 	}
 }
@@ -54,6 +88,38 @@ class date2 extends JPanel{
 		
 		date date = new date("5/3");
 		add(date);
+		
+		//시간 선택 버튼
+		
+				JRadioButton radioButton1 = new JRadioButton();
+				JRadioButton radioButton2 = new JRadioButton();
+				JRadioButton radioButton3 = new JRadioButton();
+				
+				radioButton1.setOpaque(false);
+				radioButton2.setOpaque(false);
+				radioButton3.setOpaque(false);
+				
+				radioButton1.setBounds(150, 25, 150, 60);
+				radioButton1.setText("8:30 ~ 10 : 19");
+				Font font1 = radioButton1.getFont();
+				radioButton1.setFont(new Font(font1.getFontName(), Font.BOLD,18));
+				radioButton2.setBounds(300, 25, 200, 60);
+				radioButton2.setText("12:00 ~ 13 : 49");
+				Font font2 = radioButton2.getFont();
+				radioButton2.setFont(new Font(font2.getFontName(), Font.BOLD,18));
+				radioButton3.setBounds(450, 25, 200, 60);
+				radioButton3.setText("18:00 ~ 19:49");
+				Font font3 = radioButton3.getFont();
+				radioButton3.setFont(new Font(font3.getFontName(), Font.BOLD,18));
+				// 라디오 버튼을 그룹으로 묶기
+				ButtonGroup group = new ButtonGroup();
+				group.add(radioButton1);
+				group.add(radioButton2);
+				group.add(radioButton3);
+				
+				add(radioButton1);
+				add(radioButton2);
+				add(radioButton3);
 	}
 }
 
