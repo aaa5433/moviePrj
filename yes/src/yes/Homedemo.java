@@ -152,6 +152,7 @@ public class Homedemo extends JFrame{
       ImageIcon updateIcon5 = new ImageIcon(updateImg5);
       imglabel5.setIcon(updateIcon5);
       panel5.add(imglabel5);
+      
 
       // 패널 6------------------------
 
@@ -232,7 +233,7 @@ public class Homedemo extends JFrame{
             reserve.addActionListener(new ActionListener() {
                public void actionPerformed(ActionEvent e) {
                   // 두 번째 프레임 생성
-                  setVisible(false);
+                  frame.setVisible(false);
                   Choice_date frame2 = new Choice_date();
                   
                   
@@ -354,11 +355,28 @@ public class Homedemo extends JFrame{
             
          }
       });
+      
+      
+      class logo extends JPanel{
+    	  public logo() {
+    		  setBounds(10, 10, 200, 100);
+    		  JLabel megabox = new JLabel();// 이미지 담을 라벨
+    	      ImageIcon icon = new ImageIcon("C:\\javaproject\\work\\movie\\src\\movie\\image\\megabox.jpg");// 이미지 주소
+    	      Image img = icon.getImage();
+    	      Image updateImg = img.getScaledInstance(200, 80, Image.SCALE_DEFAULT);// 크기조정
+    	      ImageIcon updateIcon = new ImageIcon(updateImg);
+    	      megabox.setIcon(updateIcon);
+    	      add(megabox);
+    	  }
+      }
 
       // 프레임에 마이페이지와 카드레이아웃 패널 추가
 
       add(my_Page_Panel);
       add(card);
+      add(new logo());
+      
+      
       setBounds(350, 150, 1200, 800);
       setVisible(true);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
