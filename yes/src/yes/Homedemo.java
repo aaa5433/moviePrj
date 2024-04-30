@@ -361,7 +361,7 @@ public class Homedemo extends JFrame{
     	  public logo() {
     		  setBounds(10, 10, 200, 100);
     		  JLabel megabox = new JLabel();// 이미지 담을 라벨
-    	      ImageIcon icon = new ImageIcon("C:\\javaproject\\work\\movie\\src\\movie\\image\\megabox.jpg");// 이미지 주소
+    	      ImageIcon icon = new ImageIcon("image\\logo.jpg");// 이미지 주소
     	      Image img = icon.getImage();
     	      Image updateImg = img.getScaledInstance(200, 80, Image.SCALE_DEFAULT);// 크기조정
     	      ImageIcon updateIcon = new ImageIcon(updateImg);
