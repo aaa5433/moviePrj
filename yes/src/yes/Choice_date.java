@@ -14,7 +14,7 @@ import javax.swing.border.LineBorder;
 
 // 날짜 및 시간대
 
-//시간대 버튼 클래스
+//시간대 버튼 클래스s
 
 class Time_Button extends JRadioButton {
 	private String Time;
