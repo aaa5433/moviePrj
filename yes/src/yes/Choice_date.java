@@ -1,4 +1,6 @@
+
 package yes.src.yes;
+
 
 
 import java.awt.Color;
@@ -14,7 +16,7 @@ import javax.swing.border.LineBorder;
 
 // 날짜 및 시간대
 
-//시간대 버튼 클래스s
+//시간대 버튼 클래스
 
 class Time_Button extends JRadioButton {
 	private String Time;
