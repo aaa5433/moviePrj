@@ -1,5 +1,4 @@
 package yes.src.yes;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -28,7 +27,7 @@ public class Payment extends JFrame implements ActionListener {
 	private ButtonGroup group = new ButtonGroup();
 	private boolean bl = false;
 	private JLabel label = new JLabel("        ※결제 방법을 선택해주세요※        ");
-	private ImageIcon icon = new ImageIcon("image/logo.jpg");
+	private ImageIcon icon = new ImageIcon("src/image/megabox.jpg");
 	private Image img = icon.getImage();
 	private Image changeImg = img.getScaledInstance(350, 80, Image.SCALE_SMOOTH);
 	private ImageIcon changeIcon = new ImageIcon(changeImg);
@@ -115,15 +114,7 @@ public class Payment extends JFrame implements ActionListener {
 			}
 		});
 
-		btn1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Homedemo frame2 = new Homedemo();
-				frame1.dispose();
-				frame2.setVisible(true);
-
-			}
-		});
+		
 	}
 
 	@Override
@@ -135,6 +126,11 @@ public class Payment extends JFrame implements ActionListener {
 		if (btn1 == ob) {
 			if (bl == true) {
 				JOptionPane.showMessageDialog(btn1, "결제 완료");
+				Homedemo frame2 = new Homedemo();
+				frame1.dispose();
+				frame2.setVisible(true);
+				
+				
 			} else {
 				JOptionPane.showMessageDialog(btn1, "결제 수단을 선택해주세요.");
 			}
