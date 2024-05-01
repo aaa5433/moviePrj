@@ -3,7 +3,6 @@ package yes.src.yes;
 
 
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -243,6 +242,7 @@ class Your_Choice extends JPanel {
    private static Choice_Label theaterLabel;
    private static Choice_Label dateLabel;
    private static Choice_Label TimeLabel;
+   
 
    public Your_Choice() {
       setBounds(950, 180, 200, 300);
@@ -265,17 +265,21 @@ class Your_Choice extends JPanel {
       add(dateLabel);
       add(TimeLabel);
    }
+   
 
    public static void updateTheater(String theaterName) {
       theaterLabel.Set_Text("극장: " + theaterName);
+      Your_ticket.theater.Set_Text("극장: " + theaterName);
    }
 
    public static void updateDate(String date) {
       dateLabel.Set_Text("상영일자: " + date);
+      Your_ticket.date.Set_Text("상영일자: " + date);
    }
 
    public static void updateDateTime(String dateTime) {
       TimeLabel.Set_Text("상영시간: " + dateTime);
+      Your_ticket.time.Set_Text("상영시간: " + dateTime);
    }
 }
 
@@ -347,6 +351,17 @@ public class Choice_date extends JFrame {
             frame.dispose(); // 현재 프레임 종료
          }
       });
+      
+      // 좌석 선택
+      JButton seat = new JButton("좌석 선택");
+      seat.setBounds(950, 650, 200, 50);
+      seat.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            Seat frame1 = new Seat();
+            frame.dispose(); // 현재 프레임 종료
+         }
+      });
+      add(seat);
       add(homeButton);
       setVisible(true);
    }

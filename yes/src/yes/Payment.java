@@ -1,4 +1,6 @@
 package yes.src.yes;
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -22,7 +24,7 @@ import javax.swing.JRadioButton;
 public class Payment extends JFrame implements ActionListener {
 	JFrame frame1 = this;
 	private Container paymentPage;
-	private JButton btn1, btn2;
+	private JButton btn1;
 	private JRadioButton r1, r2, r3, r4;
 	private ButtonGroup group = new ButtonGroup();
 	private boolean bl = false;
@@ -37,7 +39,7 @@ public class Payment extends JFrame implements ActionListener {
 		super("결제 화면");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		paymentPage = this.getContentPane();
-		this.setBounds(200, 100, 350, 317);
+		this.setBounds(725, 375, 350, 317);
 		paymentPage.setBackground(new Color(99, 55, 192));
 		paymentPage.setLayout(new FlowLayout());
 		setDesign();

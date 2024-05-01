@@ -1,5 +1,6 @@
 package yes.src.yes;
 
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -23,6 +24,7 @@ public class Homedemo extends JFrame{
       JPanel card = new JPanel(new CardLayout());
 
       card.setBounds(0, 100, 1200, 800);
+      
       card.setBackground(Color.yellow);
 
       // 첫 번째 창
@@ -222,10 +224,11 @@ public class Homedemo extends JFrame{
       JButton my_Page_button = new JButton("마이페이지");
       my_Page_Panel.setBounds(1020, 10, 200, 100);
       my_Page_Panel.add(my_Page_button);
-
+      
+      
       // --------예매버튼
       class reserve_Panel extends JPanel {
-         public reserve_Panel() {
+         public reserve_Panel(String movie1) {
             setLayout(null);
             JButton reserve = new JButton("예매하기");
             reserve.setBounds(0, 0, 180, 40);// 예매버튼 버튼 설정
@@ -235,7 +238,7 @@ public class Homedemo extends JFrame{
                   // 두 번째 프레임 생성
                   frame.setVisible(false);
                   Choice_date frame2 = new Choice_date();
-                  
+                  Your_ticket.movie.Set_Text("영화: "+movie1); ;
                   
                   
                   
@@ -247,34 +250,34 @@ public class Homedemo extends JFrame{
             add(reserve);
          }
       }
-      reserve_Panel reserve_Panel1 = new reserve_Panel();
+      reserve_Panel reserve_Panel1 = new reserve_Panel("범죄도시4");
       reserve_Panel1.setBounds(120, 460, 180, 40);// 예매버튼 패널 설정
 
-      reserve_Panel reserve_Panel2 = new reserve_Panel();
+      reserve_Panel reserve_Panel2 = new reserve_Panel("쿵푸팬더4");
       reserve_Panel2.setBounds(380, 460, 180, 40);
 
-      reserve_Panel reserve_Panel3 = new reserve_Panel();
+      reserve_Panel reserve_Panel3 = new reserve_Panel("슈가: 더 무비");
       reserve_Panel3.setBounds(630, 460, 180, 40);
 
-      reserve_Panel reserve_Panel4 = new reserve_Panel();
+      reserve_Panel reserve_Panel4 = new reserve_Panel("파묘");
       reserve_Panel4.setBounds(880, 460, 180, 40);
 
-      reserve_Panel reserve_Panel5 = new reserve_Panel();
+      reserve_Panel reserve_Panel5 = new reserve_Panel("챌린저스");
       reserve_Panel5.setBounds(120, 460, 180, 40);
 
-      reserve_Panel reserve_Panel6 = new reserve_Panel();
+      reserve_Panel reserve_Panel6 = new reserve_Panel("몬스터프렌즈");
       reserve_Panel6.setBounds(380, 460, 180, 40);
 
-      reserve_Panel reserve_Panel7 = new reserve_Panel();
+      reserve_Panel reserve_Panel7 = new reserve_Panel("남은 인생 10년");
       reserve_Panel7.setBounds(630, 460, 180, 40);
 
-      reserve_Panel reserve_Panel8 = new reserve_Panel();
+      reserve_Panel reserve_Panel8 = new reserve_Panel("스턴트맨");
       reserve_Panel8.setBounds(880, 460, 180, 40);
 
-      reserve_Panel reserve_Panel9 = new reserve_Panel();
+      reserve_Panel reserve_Panel9 = new reserve_Panel("포켓몬스터: 성도 지방 이야기");
       reserve_Panel9.setBounds(120, 460, 180, 40);
 
-      reserve_Panel reserve_Panel10 = new reserve_Panel();
+      reserve_Panel reserve_Panel10 = new reserve_Panel("여행자의 필요");
       reserve_Panel10.setBounds(380, 460, 180, 40);
 
       // 첫 번째 창에 영화 1~4 이미지와 예매버튼 추가
@@ -361,7 +364,7 @@ public class Homedemo extends JFrame{
     	  public logo() {
     		  setBounds(10, 10, 200, 100);
     		  JLabel megabox = new JLabel();// 이미지 담을 라벨
-    	      ImageIcon icon = new ImageIcon("image\\logo.jpg");// 이미지 주소
+    	      ImageIcon icon = new ImageIcon("C:\\javaproject\\work\\movie\\src\\movie\\image\\megabox.jpg");// 이미지 주소
     	      Image img = icon.getImage();
     	      Image updateImg = img.getScaledInstance(200, 80, Image.SCALE_DEFAULT);// 크기조정
     	      ImageIcon updateIcon = new ImageIcon(updateImg);
