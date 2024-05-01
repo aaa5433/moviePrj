@@ -28,7 +28,7 @@ public class Payment extends JFrame implements ActionListener {
 	private ButtonGroup group = new ButtonGroup();
 	private boolean bl = false;
 	private JLabel label = new JLabel("        ※결제 방법을 선택해주세요※        ");
-	private ImageIcon icon = new ImageIcon("src/image/megabox.jpg");
+	private ImageIcon icon = new ImageIcon("image/logo.jpg");
 	private Image img = icon.getImage();
 	private Image changeImg = img.getScaledInstance(350, 80, Image.SCALE_SMOOTH);
 	private ImageIcon changeIcon = new ImageIcon(changeImg);
