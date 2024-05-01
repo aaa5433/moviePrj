@@ -1,40 +1,17 @@
 //jhmoon
 package yes.src.yes;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
 import java.net.URI;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
+import javax.swing.*;
 
 import yes.src.dao.UserDao;
 
@@ -49,6 +26,8 @@ public class Login implements KeyListener {
 	private static JLayeredPane layeredPane = new JLayeredPane();
 	private static JLabel background = new JLabel(new ImageIcon("img\\megaboxlogo.jpg"));
 	private static JLabel closeBtn = new JLabel(new ImageIcon("img\\close.jpg"));
+	private static String yyyymmdd = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+	private static String hhmmss = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
 	public static JFrame getFrame() {
 		return loginFrame;
@@ -62,10 +41,9 @@ public class Login implements KeyListener {
 		loginFrame.setTitle("MegaBox Login"); // 프레임 제목 설정
 		loginFrame.setLocationRelativeTo(null);
 		loginFrame.setResizable(false);
-
 		background.setBounds(0, 0, 500, 300);
 		layeredPane.setPreferredSize(new Dimension(500, 300));
-
+		
 		idText.setBounds(60, 50, 56, 30);
 		passText.setBounds(60, 100, 56, 30);
 
@@ -75,9 +53,9 @@ public class Login implements KeyListener {
 		LoginBtn.setBorderPainted(false);
 		
 		closeBtn.setBounds(470, 0, 30, 30);
-
-		join.setBounds(80, 250, 100, 38);
-		join.setForeground(Color.white);
+		closeBtn.setOpaque(false);
+		join.setBounds(130, 140, 180, 30);
+		join.setForeground(Color.gray);
 
 		addComponentsToLayeredPane();
 		Color color = new Color(70, 70, 80);
@@ -88,20 +66,23 @@ public class Login implements KeyListener {
 		loginFrame.setUndecorated(true);
 		loginFrame.setVisible(true);
 		loginFrame.getContentPane().add(background);
-
-		
 		
 		LoginBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				loginCheck(idInputTextBox.getText(), passInputTextBox.getPassword());
+				try {
+					loginCheck(idInputTextBox.getText(), passInputTextBox.getPassword());
+					UserDao.insertUserHistory(idInputTextBox.getText(), yyyymmdd+" "+hhmmss);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 
 		join.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				loginFrame.setVisible(false);
 				new Join();
 				idInputTextBox.setText("");
 				passInputTextBox.setText("");
@@ -120,6 +101,12 @@ public class Login implements KeyListener {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == 10) {
 					loginCheck(idInputTextBox.getText(), passInputTextBox.getPassword());
+					try {
+						UserDao.insertUserHistory(idInputTextBox.getText(), yyyymmdd+" "+hhmmss);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -138,20 +125,12 @@ public class Login implements KeyListener {
 	   
 	public void loginCheck(String id, char[] cs) {
 		LocalTime now = LocalTime.now();
-		LocalDateTime now1 = LocalDateTime.now();
-
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-		String formatedTime = now.format(formatter);
-
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // 포맷 적용
-		String dateFormated = now1.format(dateFormatter);
-
+		
 		String pw = new String(cs);
 		int loginCode = UserDao.login(id, pw);
-		System.out.println(loginCode);
 		try {
 			if (loginCode == 0) {
-				JOptionPane.showMessageDialog(null, id + "님 " + "로그인 일자\n" + dateFormated + " " + formatedTime,
+				JOptionPane.showMessageDialog(null, id + "님 " + "로그인 일자\n" + yyyymmdd + " " + hhmmss,
 						"경고 메시지", JOptionPane.WARNING_MESSAGE);
 				loginFrame.setVisible(false);
 				new Homedemo();
@@ -173,13 +152,11 @@ public class Login implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int keycode = e.getKeyCode();
-		System.out.println(keycode);
-		System.out.println(e.getKeyCode());
 		if (e.getKeyCode() == 10) {
-			System.out.println("enter");
+//			System.out.println("enter");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			System.out.println("enter");
+//			System.out.println("enter");
 		}
 		
 	}
