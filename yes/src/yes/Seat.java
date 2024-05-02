@@ -282,7 +282,7 @@ public class Seat extends JFrame {
            public void actionPerformed(ActionEvent e) {
         	  if(Adult_Panel.get_Person() == 0)
     				JOptionPane.showMessageDialog(null, "인원이 0명입니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
-        	  if(Adult_Panel.get_Person() != PersonPanel.checked) {
+        	  else if(Adult_Panel.get_Person() != PersonPanel.checked) {
   				JOptionPane.showMessageDialog(null, "인원과 티켓 장수가 맞지 않습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
         	  }else {
               Payment frame1 = new Payment();
