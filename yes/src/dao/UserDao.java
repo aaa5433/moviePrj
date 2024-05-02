@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class UserDao {
-	static User user = new User();
+	static ArrayList list = new ArrayList<>();
 
 	public UserDao() {
 	}
@@ -24,7 +24,7 @@ public class UserDao {
 	private static PreparedStatement pstmt;
 	private static ResultSet rs;
 
-	public static User selectOne(String userId) {
+	public static ArrayList selectOne(String userId) {
 		String sql = "SELECT * FROM USERS WHERE ID = ?";
 		conn = DBConnection.getConnection();
 
@@ -34,15 +34,15 @@ public class UserDao {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				user.getId(rs.getString("ID"));
-				user.getPassword(rs.getString("PASSWORD"));
-				user.getName(rs.getString("NAME"));
-				user.getIdNum(rs.getString("IDNUM"));
-				user.getMail(rs.getString("MAIL"));
-				user.getGender(rs.getString("GENDER"));
-				user.getPhone(rs.getString("PHONE"));
+				list.add(rs.getString("ID"));
+				list.add(rs.getString("PASSWORD"));
+				list.add(rs.getString("NAME"));
+				list.add(rs.getString("IDNUM"));
+				list.add(rs.getString("MAIL"));
+				list.add(rs.getString("PHONE"));
+				list.add(rs.getString("GENDER"));
 				conn.close();
-				return user;
+				return list;
 			} else {
 				conn.close();
 				return null;
@@ -65,12 +65,26 @@ public class UserDao {
 			pstmt.setString(3, list.get("name"));	
 			pstmt.setString(4, list.get("idNum"));	
 			pstmt.setString(5, list.get("mail"));	
-			pstmt.setString(6, list.get("gender"));	
-			pstmt.setString(7, list.get("phone"));	
-			
+			pstmt.setString(6, list.get("phone"));
+			pstmt.setString(7, list.get("gender"));
 			System.out.println(pstmt.toString());
 			
-			int cnt = pstmt.executeUpdate();
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			conn.close();
+		}
+	}public static void insertUserHistory(String id,String time) throws SQLException {
+		String sql = "INSERT INTO USERHISTORY VALUES(?,?)";
+		try {
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, time);
+			
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -87,8 +101,6 @@ public class UserDao {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				System.out.println(userID);
-				System.out.println(rs.getString(1).toString());
 				if (rs.getString(2).equals(password))
 					return 0; // 로그인 성공
 				else if (!rs.getString(2).equals(password))
@@ -124,7 +136,7 @@ public class UserDao {
 		return -1;
 	}
 
-	public static User selectAll() {
+	public static ArrayList selectAll() {
 		String sql = "SELECT * FROM USERS";
 		conn = DBConnection.getConnection();
 
@@ -133,16 +145,15 @@ public class UserDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				User user = new User();
-				user.getId(rs.getString("ID"));
-				user.getPassword(rs.getString("PASS"));
-				user.getName(rs.getString("NAME"));
-				user.getIdNum(rs.getString("IDNUM"));
-				user.getMail(rs.getString("MAIL"));
-				user.getGender(rs.getString("GENDER"));
+				list.add(rs.getString("ID"));
+				list.add(rs.getString("PASS"));
+				list.add(rs.getString("NAME"));
+				list.add(rs.getString("IDNUM"));
+				list.add(rs.getString("MAIL"));
+				list.add(rs.getString("GENDER"));
 			}
 			conn.close();
-			return user;
+			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
