@@ -129,6 +129,8 @@ class Seat_Button extends JButton{
 }
 class Seat_Panel extends JPanel{
 	public Seat_Panel() {
+		PersonPanel.checked = 0;
+		PersonPanel.tickets = "";
 		setLayout(null);
 		setBounds(130, 30, 950, 400);
 		setBackground(Color.white);
@@ -237,7 +239,7 @@ class Your_Choice1 extends JPanel {
 	      info.setBounds(25, 0, 200, 50);
 	      
 	      
-	      a1.setBounds(10, 80, 120, 200);
+	      a1.setBounds(10, 80, 120, 500);
 	      
 	      
 	      add(info);
@@ -278,6 +280,8 @@ public class Seat extends JFrame {
         payment.setBounds(600, 625, 200, 50);
         payment.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e) {
+        	  if(Adult_Panel.get_Person() == 0)
+    				JOptionPane.showMessageDialog(null, "인원이 0명입니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
         	  if(Adult_Panel.get_Person() != PersonPanel.checked) {
   				JOptionPane.showMessageDialog(null, "인원과 티켓 장수가 맞지 않습니다.", "경고 메시지", JOptionPane.WARNING_MESSAGE);
         	  }else {
